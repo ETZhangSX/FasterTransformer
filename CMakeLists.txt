@@ -49,6 +49,7 @@ option(BUILD_TF2 "Build in TensorFlow2 mode" OFF)
 option(BUILD_PYT "Build in PyTorch TorchScript class mode" OFF)
 option(BUILD_TRT "Build projects about TensorRT" OFF)
 option(GIT_AUTOCLONE_CUTLASS "Check submodules during build" ON)
+option(BUILD_EXAMPLES "Build with examples" OFF)
 if(NOT BUILD_MULTI_GPU)
   option(BUILD_MULTI_GPU "Build project about multi-GPU" OFF)
 endif()
@@ -300,7 +301,10 @@ link_directories(
 
 add_subdirectory(3rdparty)
 add_subdirectory(src)
-add_subdirectory(examples)
+
+if (BUILD_EXAMPLES)
+  add_subdirectory(examples)
+endif()
 
 add_subdirectory(tests)
 
